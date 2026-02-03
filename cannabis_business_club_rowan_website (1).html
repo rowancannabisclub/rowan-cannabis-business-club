@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cannabis Business Club at Rowan University — an academic and professional student organization focused on the legal, financial, and regulatory sides of the cannabis and hemp industries." />
+  <title>Cannabis Business Club @ Rowan</title>
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#101826;
+      --muted:#a9b4c4;
+      --text:#e8eef7;
+      --brand:#6ee7b7;
+      --brand2:#60a5fa;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 16px 40px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Top bar */
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,15,20,.7);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:36px; height:36px;
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(110,231,183,.9), rgba(96,165,250,.9));
+      box-shadow: 0 10px 25px rgba(110,231,183,.15);
+      display:grid;
+      place-items:center;
+      color:#081018;
+      font-weight:900;
+    }
+    nav ul{list-style:none; display:flex; gap:14px; padding:0; margin:0}
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:10px 10px;
+      border-radius:12px;
+      transition:all .2s ease;
+      font-weight:600;
+      font-size:14px;
+    }
+    nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+
+    .btn{
+      appearance:none;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:14px;
+      cursor:pointer;
+      transition:transform .15s ease, background .2s ease;
+      font-weight:700;
+      font-size:14px;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .btn:hover{background:rgba(255,255,255,.09); transform:translateY(-1px)}
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, rgba(110,231,183,.95), rgba(96,165,250,.95));
+      color:#061019;
+    }
+    .btn.primary:hover{transform:translateY(-1px) scale(1.01)}
+    .btn.small{padding:8px 10px; border-radius:12px; font-weight:700}
+
+    /* Hero */
+    .hero{padding:60px 0 30px}
+    .hero-grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:20px}
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr;}
+      nav ul{display:none}
+    }
+    .hero h1{
+      font-size:42px;
+      line-height:1.1;
+      margin:0 0 12px;
+      letter-spacing:-.6px;
+    }
+    .hero p{color:var(--muted); margin:0 0 18px; max-width:60ch}
+    .hero-card{
+      background: rgba(16,24,38,.78);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-card .inner{padding:18px}
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      font-weight:800;
+      color:#061019;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(110,231,183,.95), rgba(96,165,250,.95));
+    }
+    .kpis{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:14px}
+    .kpi{
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi b{display:block; font-size:18px}
+    .kpi span{color:var(--muted); font-size:12px; font-weight:700}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin-bottom:14px}
+    h2{margin:0; font-size:22px; letter-spacing:-.2px}
+    .section-title p{margin:0; color:var(--muted); font-weight:600; font-size:14px}
+
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    @media (max-width: 920px){.grid{grid-template-columns:1fr}}
+
+    .card{
+      background: rgba(16,24,38,.65);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      min-height: 120px;
+    }
+    .card h3{margin:0 0 8px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-weight:600; font-size:14px}
+
+    /* Events */
+    .events{display:grid; grid-template-columns: 1.2fr .8fr; gap:14px}
+    @media (max-width: 920px){.events{grid-template-columns:1fr}}
+
+    .event-item{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+    .event-item b{display:block}
+    .event-item small{color:var(--muted); font-weight:700}
+    .event-meta{display:flex; flex-direction:column; gap:6px}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    /* Join */
+    form{display:grid; gap:10px}
+    label{font-weight:800; font-size:12px; color:var(--muted)}
+    input, textarea, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(11,15,20,.35);
+      color:var(--text);
+      outline:none;
+      font-weight:650;
+    }
+    textarea{min-height:92px; resize:vertical}
+    .note{
+      color:var(--muted);
+      font-size:12px;
+      font-weight:650;
+      margin:0;
+    }
+
+    /* Footer */
+    footer{padding:26px 0 40px; border-top:1px solid var(--border); color:var(--muted)}
+    footer .foot{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      place-items:center;
+      background:rgba(0,0,0,.55);
+      padding:18px;
+    }
+    .modal.open{display:grid}
+    .modal-card{
+      width:min(680px, 100%);
+      background:rgba(16,24,38,.92);
+      border:1px solid var(--border);
+      border-radius:22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08)}
+    .modal-head b{font-size:14px}
+    .modal-body{padding:16px}
+
+    /* Print */
+    @media print{
+      header, .actions, .btn, .modal{display:none !important}
+      body{background:#fff; color:#000}
+      .card, .hero-card{box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="logo">CB</div>
+        <div>
+          <div style="font-size:14px; line-height:1.1">Cannabis Business Club</div>
+          <div style="font-size:12px; color:var(--muted); font-weight:700">Rowan University</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#resources">Resources</a></li>
+          <li><a href="#join">Join</a></li>
+        </ul>
+      </nav>
+
+      <div class="actions" style="display:flex; gap:10px; align-items:center">
+        <button class="btn small" id="openBylaws" type="button">Bylaws</button>
+        <a class="btn primary" href="#join">Get Involved</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container hero">
+      <div class="hero-grid">
+        <div>
+          <span class="tag">Academic • Professional • Compliance-first</span>
+          <h1>Learn the business of a regulated industry.</h1>
+          <p>
+            The Cannabis Business Club is a student organization focused on the <b>legal, financial, and regulatory</b>
+            sides of the cannabis and hemp industries. We host speakers, run workshops, and explore careers in compliance,
+            entrepreneurship, finance, and policy.
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="btn primary" href="#events">See upcoming events</a>
+            <button class="btn" id="downloadIcs" type="button">Add meetings to calendar</button>
+            <button class="btn" id="copyContact" type="button">Copy club contact</button>
+          </div>
+          <p class="note" style="margin-top:10px">
+            Note: This is an educational organization. We do not promote or support the use, sale, or distribution of cannabis.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick info">
+          <div class="inner">
+            <b style="font-size:16px">Quick Info</b>
+            <div class="kpis" role="list" aria-label="Key highlights">
+              <div class="kpi" role="listitem"><b>Speaker Nights</b><span>Industry guests</span></div>
+              <div class="kpi" role="listitem"><b>Workshops</b><span>Resume + skills</span></div>
+              <div class="kpi" role="listitem"><b>Networking</b><span>Career pathways</span></div>
+            </div>
+            <div style="margin-top:14px; display:grid; gap:10px">
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Weekly Meeting</b>
+                  <small id="meetingLine">Day & time: TBD • Location: Rowan University building</small>
+                </div>
+                <span class="pill">Substance-free</span>
+              </div>
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>What we cover</b>
+                  <small>Regulation, finance, accounting, operations, supply chain, and entrepreneurship</small>
+                </div>
+                <span class="pill">Compliance-first</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>About the Club</h2>
+            <p>We treat cannabis like any other regulated industry: learn the rules, the markets, and the careers.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Education</h3>
+            <p>Discussions and short lessons on industry structure, business models, and how regulation shapes strategy.</p>
+          </div>
+          <div class="card">
+            <h3>Professional Development</h3>
+            <p>Resume building, interview prep, and networking focused on compliance, finance, operations, and entrepreneurship.</p>
+          </div>
+          <div class="card">
+            <h3>Ethics & Compliance</h3>
+            <p>We follow University policies and applicable laws. Meetings are held in University buildings and are substance-free.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quote">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Business Insight</h2>
+            <p>An educational perspective on entrepreneurship and leadership.</p>
+          </div>
+        </div>
+        <div class="card">
+          <blockquote style="margin:0; font-size:18px; font-weight:700; line-height:1.4">
+            “The best way to predict the future is to create it.”
+          </blockquote>
+          <p style="margin:10px 0 0; color:var(--muted); font-weight:650">
+            — Peter F. Drucker, management educator
+          </p>
+          <p style="margin:10px 0 0; font-size:14px">
+            Source (external link):
+            <a href="https://www.brainyquote.com/quotes/peter_drucker_121909" target="_blank" rel="noopener noreferrer">
+              https://www.brainyquote.com/quotes/peter_drucker_121909
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Events</h2>
+            <p>Update the schedule below with your real times/rooms when you have them.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn" id="addEvent" type="button">Add a sample event</button>
+            <button class="btn" id="clearEvents" type="button">Clear events</button>
+          </div>
+        </div>
+
+        <div class="events">
+          <div class="card" aria-label="Upcoming events">
+            <h3 style="margin-top:0">Upcoming</h3>
+            <div id="eventList" style="display:grid; gap:10px; margin-top:10px"></div>
+            <p class="note" style="margin-top:12px">Tip: Your officers can edit the events list directly in the code, or you can store events in your student org platform and link to it.</p>
+          </div>
+
+          <div class="card" aria-label="Meeting norms">
+            <h3 style="margin-top:0">Meeting Norms</h3>
+            <div style="display:grid; gap:10px; margin-top:10px">
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Professional environment</b>
+                  <small>Respectful discussion, academic focus, and University-approved spaces.</small>
+                </div>
+              </div>
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Substance-free attendance</b>
+                  <small>No member or guest may attend under the influence of alcohol, cannabis, or any impairing substance.</small>
+                </div>
+              </div>
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>No possession or distribution</b>
+                  <small>Alcohol, cannabis, and illegal drugs are not permitted at any Club meeting or event.</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="resources">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Resources</h2>
+            <p>Starter topics for research and meeting discussions.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Regulation & Policy</h3>
+            <p>Licensing, compliance, advertising rules, banking constraints, and how policy changes affect business strategy.</p>
+          </div>
+          <div class="card">
+            <h3>Finance & Accounting</h3>
+            <p>Capital structure, valuation, taxation topics, risk management, and financial reporting challenges.</p>
+          </div>
+          <div class="card">
+            <h3>Operations & Supply Chain</h3>
+            <p>Inventory controls, quality assurance, logistics, retail operations, and compliance-driven process design.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3 style="margin-top:0">Club Documents</h3>
+          <p style="margin:0; color:var(--muted); font-weight:650">
+            Add links here to your constitution/bylaws, membership form, and officer contact list.
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+            <button class="btn" type="button" id="openBylaws2">Open bylaws</button>
+            <button class="btn" type="button" id="printPage">Print / Save as PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="container">
+        <div class="section-title">
+          <div>
+            <h2>Join</h2>
+            <p>Fill this out to generate an email you can send to the club officers.</p>
+          </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: 1.2fr .8fr">
+          <div class="card">
+            <h3 style="margin-top:0">Interest Form</h3>
+            <form id="joinForm">
+              <div>
+                <label for="name">Full name</label>
+                <input id="name" name="name" placeholder="Your name" required />
+              </div>
+              <div>
+                <label for="email">Rowan email</label>
+                <input id="email" name="email" type="email" placeholder="you@students.rowan.edu" required />
+              </div>
+              <div>
+                <label for="interest">What are you interested in?</label>
+                <select id="interest" name="interest">
+                  <option>Career networking</option>
+                  <option>Finance / accounting</option>
+                  <option>Regulation / policy</option>
+                  <option>Entrepreneurship</option>
+                  <option>Operations / supply chain</option>
+                  <option>General learning</option>
+                </select>
+              </div>
+              <div>
+                <label for="message">Message (optional)</label>
+                <textarea id="message" name="message" placeholder="Any goals, questions, or topics you want to learn about?"></textarea>
+              </div>
+              <button class="btn primary" type="submit">Generate email</button>
+              <p class="note">This form does not store your data. It creates an email draft on your computer.</p>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3 style="margin-top:0">Contact</h3>
+            <p style="margin:0 0 10px; color:var(--muted); font-weight:650">Update these placeholders with your real officer emails once assigned.</p>
+            <div style="display:grid; gap:10px">
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Club Email</b>
+                  <small id="clubEmail">cannabisbusinessclub@rowan.edu (placeholder)</small>
+                </div>
+                <button class="btn small" type="button" id="copyEmail">Copy</button>
+              </div>
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Instagram</b>
+                  <small>@rowan.cannabisbusiness (placeholder)</small>
+                </div>
+                <span class="pill">Optional</span>
+              </div>
+              <div class="event-item">
+                <div class="event-meta">
+                  <b>Meeting Location</b>
+                  <small>Rowan University building (room TBD)</small>
+                </div>
+                <span class="pill">On campus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <b style="color:var(--text)">Cannabis Business Club @ Rowan University</b>
+        <div style="margin-top:6px">Educational and professional organization. Meetings are substance-free and held in University buildings.</div>
+        <div style="margin-top:6px; font-size:12px">This organization is not affiliated with or endorsed by Rowan University.</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+        <button class="btn" type="button" id="backToTop">Back to top</button>
+        <button class="btn" type="button" id="toggleTheme">Toggle contrast</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bylaws Modal -->
+  <div class="modal" id="bylawsModal" role="dialog" aria-modal="true" aria-labelledby="bylawsTitle">
+    <div class="modal-card">
+      <div class="modal-head">
+        <b id="bylawsTitle">Constitution & Bylaws (Summary)</b>
+        <button class="btn small" type="button" id="closeBylaws">Close</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-top:0; color:var(--muted); font-weight:650">
+          Replace this summary with your full text or link to your official document.
+        </p>
+        <div class="card" style="background:rgba(255,255,255,.03)">
+          <h3 style="margin-top:0">Key Rules</h3>
+          <ul style="margin:0; padding-left:18px; color:var(--muted); font-weight:650">
+            <li>Educational and professional purpose only; no promotion, sale, or distribution of cannabis.</li>
+            <li>Meetings held in Rowan University buildings in accordance with University policies.</li>
+            <li><b>Substance-free attendance:</b> no one may attend under the influence of alcohol, cannabis, or any impairing substance.</li>
+            <li>No possession or use of alcohol, cannabis, or illegal drugs at meetings/events.</li>
+          </ul>
+        </div>
+        <p class="note" style="margin-top:12px">Tip: If your student org portal requires the full bylaws, upload the Word/PDF there and paste the link into this site.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------------
+    // Editable settings (update these)
+    // ---------------------------
+    const CLUB = {
+      name: 'Cannabis Business Club',
+      school: 'Rowan University',
+      contactEmail: 'rowancannabisclub@gmail.com',
+      instagram: '@rowan.cannabisbusiness', // placeholder
+      meeting: {
+        day: 'Tuesday',
+        time: 'TBD',
+        location: 'Rowan University building (room TBD)'
+      }
+    };
+
+    // Sample events (edit or replace)
+    let events = [
+      {
+        title: 'Kickoff Meeting: Cannabis Industry Overview',
+        date: 'TBD',
+        time: 'TBD',
+        location: CLUB.meeting.location,
+        type: 'Meeting'
+      },
+      {
+        title: 'Guest Speaker: Compliance & Licensing',
+        date: 'TBD',
+        time: 'TBD',
+        location: 'Rowan University building (room TBD)',
+        type: 'Speaker'
+      }
+    ];
+
+    // ---------------------------
+    // DOM helpers
+    // ---------------------------
+    const $ = (sel) => document.querySelector(sel);
+    const el = (tag, attrs = {}, children = []) => {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v]) => {
+        if(k === 'class') node.className = v;
+        else if(k === 'html') node.innerHTML = v;
+        else node.setAttribute(k, v);
+      });
+      children.forEach((c) => node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c));
+      return node;
+    };
+
+    function renderClubInfo(){
+      $('#clubEmail').textContent = CLUB.contactEmail + ' (placeholder)';
+      $('#meetingLine').textContent = `Day & time: ${CLUB.meeting.day} • ${CLUB.meeting.time} • Location: ${CLUB.meeting.location}`;
+      document.title = `${CLUB.name} @ ${CLUB.school}`;
+    }
+
+    function renderEvents(){
+      const list = $('#eventList');
+      list.innerHTML = '';
+      if(!events.length){
+        list.appendChild(el('p', { class: 'note' }, ['No events listed yet. Use “Add a sample event” or edit the events in the code.']));
+        return;
+      }
+      events.forEach((ev, idx) => {
+        const left = el('div', { class: 'event-meta' }, [
+          el('b', {}, [ev.title]),
+          el('small', {}, [`${ev.date} • ${ev.time} • ${ev.location}`])
+        ]);
+
+        const right = el('div', { style: 'display:flex; gap:8px; align-items:center; flex-wrap:wrap; justify-content:flex-end' }, [
+          el('span', { class: 'pill' }, [ev.type || 'Event']),
+          el('button', { class: 'btn small', type: 'button', 'data-idx': String(idx) }, ['Remove'])
+        ]);
+
+        const row = el('div', { class: 'event-item' }, [left, right]);
+        list.appendChild(row);
+      });
+
+      list.querySelectorAll('button[data-idx]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = Number(btn.getAttribute('data-idx'));
+          events.splice(i, 1);
+          renderEvents();
+        });
+      });
+    }
+
+    // ---------------------------
+    // Modal
+    // ---------------------------
+    const modal = $('#bylawsModal');
+    const openBylaws = () => modal.classList.add('open');
+    const closeBylaws = () => modal.classList.remove('open');
+
+    $('#openBylaws').addEventListener('click', openBylaws);
+    $('#openBylaws2').addEventListener('click', openBylaws);
+    $('#closeBylaws').addEventListener('click', closeBylaws);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeBylaws(); });
+    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeBylaws(); });
+
+    // ---------------------------
+    // Join form: generates a mailto draft
+    // ---------------------------
+    $('#joinForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = $('#name').value.trim();
+      const email = $('#email').value.trim();
+      const interest = $('#interest').value;
+      const message = $('#message').value.trim();
+
+      const subject = encodeURIComponent(`Interest in ${CLUB.name}`);
+      const bodyLines = [
+        `Hi ${CLUB.name} officers,`,
+        '',
+        `My name is ${name} (${email}). I am interested in: ${interest}.`,
+        message ? `\nMessage: ${message}` : '',
+        '',
+        'Thanks!',
+        name
+      ].filter(Boolean);
+
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      window.location.href = `mailto:${CLUB.contactEmail}?subject=${subject}&body=${body}`;
+    });
+
+    // ---------------------------
+    // Copy buttons
+    // ---------------------------
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast('Copied to clipboard');
+      }catch{
+        toast('Copy failed (browser permission)');
+      }
+    }
+    $('#copyEmail').addEventListener('click', () => copyText(CLUB.contactEmail));
+    $('#copyContact').addEventListener('click', () => copyText(`${CLUB.name} — ${CLUB.contactEmail}`));
+
+    // ---------------------------
+    // Calendar (.ics) download for recurring weekly meeting placeholder
+    // ---------------------------
+    function download(filename, text){
+      const blob = new Blob([text], { type: 'text/calendar;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function createIcs(){
+      // Basic weekly event template. You can replace DTSTART and RRULE once you know the schedule.
+      const uid = 'cbclub-rowan-weekly@local';
+      const now = new Date();
+      const dtstamp = now.toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+
+      // Placeholder DTSTART (next Monday 6pm local) — user can edit later.
+      const base = new Date(now);
+      base.setDate(base.getDate() + ((1 + 7 - base.getDay()) % 7));
+      base.setHours(18,0,0,0);
+
+      const pad2 = (n) => String(n).padStart(2,'0');
+      const dt = `${base.getFullYear()}${pad2(base.getMonth()+1)}${pad2(base.getDate())}T${pad2(base.getHours())}${pad2(base.getMinutes())}00`;
+
+      // NOTE: Local timezone not encoded here for simplicity.
+      // Many calendar apps will treat it as floating/local time.
+      return [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Cannabis Business Club Rowan//EN',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        `UID:${uid}`,
+        `DTSTAMP:${dtstamp}`,
+        `DTSTART:${dt}`,
+        'DURATION:PT1H',
+        'RRULE:FREQ=WEEKLY',
+        `SUMMARY:${CLUB.name} Weekly Meeting`,
+        `LOCATION:${CLUB.meeting.location}`,
+        'DESCRIPTION:Educational and professional meeting. Substance-free attendance required.',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+    }
+
+    $('#downloadIcs').addEventListener('click', () => {
+      const ics = createIcs();
+      download('cbclub-rowan-weekly.ics', ics);
+      toast('Calendar file downloaded');
+    });
+
+    // ---------------------------
+    // Events controls
+    // ---------------------------
+    $('#addEvent').addEventListener('click', () => {
+      const n = events.length + 1;
+      events.unshift({
+        title: `Sample Event #${n}: Industry Topic Roundtable`,
+        date: 'TBD',
+        time: 'TBD',
+        location: 'Rowan University building (room TBD)',
+        type: 'Discussion'
+      });
+      renderEvents();
+    });
+    $('#clearEvents').addEventListener('click', () => {
+      events = [];
+      renderEvents();
+    });
+
+    // ---------------------------
+    // Utility buttons
+    // ---------------------------
+    $('#backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    $('#printPage').addEventListener('click', () => window.print());
+
+    // Contrast toggle
+    let highContrast = false;
+    $('#toggleTheme').addEventListener('click', () => {
+      highContrast = !highContrast;
+      if(highContrast){
+        document.documentElement.style.setProperty('--bg', '#06080c');
+        document.documentElement.style.setProperty('--card', '#0c1220');
+        toast('Contrast increased');
+      }else{
+        document.documentElement.style.setProperty('--bg', '#0b0f14');
+        document.documentElement.style.setProperty('--card', '#101826');
+        toast('Contrast normal');
+      }
+    });
+
+    // ---------------------------
+    // Tiny toast
+    // ---------------------------
+    let toastTimer;
+    function toast(msg){
+      clearTimeout(toastTimer);
+      let t = document.getElementById('toast');
+      if(!t){
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.style.position = 'fixed';
+        t.style.left = '50%';
+        t.style.bottom = '20px';
+        t.style.transform = 'translateX(-50%)';
+        t.style.padding = '10px 12px';
+        t.style.borderRadius = '14px';
+        t.style.border = '1px solid rgba(255,255,255,.12)';
+        t.style.background = 'rgba(16,24,38,.92)';
+        t.style.color = 'var(--text)';
+        t.style.fontWeight = '800';
+        t.style.fontSize = '13px';
+        t.style.boxShadow = '0 14px 40px rgba(0,0,0,.45)';
+        t.style.zIndex = '9999';
+        document.body.appendChild(t);
+      }
+      t.textContent = msg;
+      t.style.opacity = '1';
+      toastTimer = setTimeout(() => { t.style.opacity = '0'; }, 1400);
+    }
+
+    // Initialize
+    renderClubInfo();
+    renderEvents();
+  </script>
+</body>
+</html>
